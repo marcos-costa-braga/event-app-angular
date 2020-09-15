@@ -1,0 +1,15 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+.mat-toolbar h1{
+    margin-right: 10px;
+}
+.mat-icon{
+    margin-right: 10px;
+}
+
+a {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,39 @@
+.card {
+  max-width: 800px;
+  margin-right: 25px;
+}
+
+/* Links CSS */
+a {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(19, 47, 139);
+}
+
+ img{
+  height: 194px;
+  max-width: 350px;
+}
+img{
+  width: 35px;
+  height: 35px;
+}
+
+mat-list{
+  margin: 20px;
+  max-width: 500px;
+  width: 33%;
+}
+
+mat-list-item{
+  margin-bottom: 10px;
+  height: 300px;
+  width: 400px;
+}
+
+mat-list-item:hover{
+  background-color: whitesmoke;
+}
