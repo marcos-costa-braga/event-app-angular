@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { ListUsersComponent } from "./components/list-users/list-users.component";
 
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,13 +20,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {HttpClientModule} from '@angular/common/http'
 import { FootBarComponent } from './components/foot-bar/foot-bar.component';
 import { SupportComponent } from './components/support/support.component';
-
+import {MatTableModule} from '@angular/material/table'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { SupportComponent } from './components/support/support.component';
     EventComponent,
     BlogComponent,
     FootBarComponent,
-    SupportComponent
+    SupportComponent,
+    ListUsersComponent
    ],
   imports: [
     BrowserModule,
@@ -50,11 +54,14 @@ import { SupportComponent } from './components/support/support.component';
     MatCarouselModule.forRoot(),
     MatTabsModule,
     MatFormFieldModule,
+    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatListModule,
     MatGridListModule,
+    HttpClientModule,
+    MatTableModule,
     //FootBarComponent
   ],
   providers: [],
