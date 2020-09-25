@@ -8,6 +8,12 @@ import { EventDetailsComponent } from './components/event-details/event-details.
 import { BlogDetailsComponent } from './components/blog-details/blog-details.component';
 import { SupportComponent } from './components/support/support.component';
 import { ListUsersComponent } from './components/list-users/list-users.component';
+import { VoucherComponent } from './components/voucher/voucher.component';
+import { ListBlogsComponent } from './components/list-blogs/list-blogs.component';
+import { ListEventsComponent } from './components/list-events/list-events.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AddBlogComponent } from './components/add-blog/add-blog.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
 
 const routes: Routes = [
   {
@@ -15,7 +21,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'blog',
+    path: 'post',
     component: BlogComponent
   },
   {
@@ -39,9 +45,41 @@ const routes: Routes = [
     component: SupportComponent
   },
   {
-    path:'listusers',
+    path: 'voucher',
+    component: VoucherComponent
+  },
+  {
+    path: 'listusers',
     component: ListUsersComponent
-  }
+  },
+  {
+    path: 'listposts',
+    component: ListBlogsComponent
+  },
+  {
+    path: 'listevents',
+    component: ListEventsComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'addpost',
+    component: AddBlogComponent
+  },
+  {
+    path: 'addpost/:postId',
+    component: AddBlogComponent
+  },
+  {
+    path: 'addevent',
+    component: AddEventComponent
+  },
+  {
+    path: 'addevent/:eventId',
+    component: AddEventComponent
+  },
 ];
 
 @NgModule({

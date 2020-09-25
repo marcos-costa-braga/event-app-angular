@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { User } from '../models/user';
+import { Event } from '../models/event';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class UserService {
-    url = 'https://event-app3.herokuapp.com/users';
+export class EventService {
+    url = 'https://event-app3.herokuapp.com/events';
 
     constructor(private httpClient: HttpClient){}
 
@@ -17,35 +17,35 @@ export class UserService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
 
-    getUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>(this.url)
+    getEvents(): Observable<Event[]> {
+        return this.httpClient.get<Event[]>(this.url)
           .pipe(
             retry(2),
             catchError(this.handleError));
     }
-    getUserById(id: number): Observable<User> {
-        return this.httpClient.get<User>(this.url + '/id/' + id)
+    getEventById(id: number): Observable<Event> {
+        return this.httpClient.get<Event>(this.url + '/id/' + id)
             .pipe(
                 retry(2),
                 catchError(this.handleError)
             );
     }
-    saveUser(user: User): Observable<User> {
-        return this.httpClient.post<User>(this.url , JSON.stringify(user), this.httpOptions)
+    saveEvent(event: Event): Observable<Event> {
+        return this.httpClient.post<Event>(this.url, JSON.stringify(event), this.httpOptions)
             .pipe(
                 retry(2),
                 catchError(this.handleError)
             );
     }
-    updateUser(user: User ): Observable<User>{
-        return this.httpClient.put<User>(this.url, JSON.stringify(user), this.httpOptions)
+    updateEvent(event: Event ): Observable<Event>{
+        return this.httpClient.put<Event>(this.url, JSON.stringify(event), this.httpOptions)
         .pipe(
             retry(1),
             catchError(this.handleError)
         );
     }
-    deleteUser(user: User){
-        return this.httpClient.delete<User>(this.url + '/id/' + user.id, this.httpOptions)
+    deleteEvent(event: Event){
+        return this.httpClient.delete<Event>(this.url + '/id/' + event.id, this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)

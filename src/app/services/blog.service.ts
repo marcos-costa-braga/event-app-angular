@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { User } from '../models/user';
+import { Blog } from '../models/blog';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class UserService {
-    url = 'https://event-app3.herokuapp.com/users';
+export class BlogService {
+    url = 'https://event-app3.herokuapp.com/blogs';
 
     constructor(private httpClient: HttpClient){}
 
@@ -17,35 +17,35 @@ export class UserService {
         headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
 
-    getUsers(): Observable<User[]> {
-        return this.httpClient.get<User[]>(this.url)
+    getBlogs(): Observable<Blog[]> {
+        return this.httpClient.get<Blog[]>(this.url)
           .pipe(
             retry(2),
             catchError(this.handleError));
     }
-    getUserById(id: number): Observable<User> {
-        return this.httpClient.get<User>(this.url + '/id/' + id)
+    getBlogById(id: number): Observable<Blog> {
+        return this.httpClient.get<Blog>(this.url + '/id/' + id)
             .pipe(
                 retry(2),
                 catchError(this.handleError)
             );
     }
-    saveUser(user: User): Observable<User> {
-        return this.httpClient.post<User>(this.url , JSON.stringify(user), this.httpOptions)
+    saveBlog(blog: Blog, userId: number): Observable<Blog> {
+        return this.httpClient.post<Blog>(this.url + '?userId=' + userId, JSON.stringify(blog), this.httpOptions)
             .pipe(
                 retry(2),
                 catchError(this.handleError)
             );
     }
-    updateUser(user: User ): Observable<User>{
-        return this.httpClient.put<User>(this.url, JSON.stringify(user), this.httpOptions)
+    updateBlog(blog: Blog ): Observable<Blog>{
+        return this.httpClient.put<Blog>(this.url, JSON.stringify(blog), this.httpOptions)
         .pipe(
             retry(1),
             catchError(this.handleError)
         );
     }
-    deleteUser(user: User){
-        return this.httpClient.delete<User>(this.url + '/id/' + user.id, this.httpOptions)
+    deleteBlog(blog: Blog){
+        return this.httpClient.delete<Blog>(this.url + '/id/' + blog.id, this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
